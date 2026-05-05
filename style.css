@@ -6,7 +6,7 @@ body {
   overflow-x: hidden;
 }
 
-/* 🌌 animated background */
+/* 🌌 background */
 .bg {
   position: fixed;
   width: 100%;
@@ -15,7 +15,7 @@ body {
               radial-gradient(circle at 80% 80%, #9333ea, transparent),
               black;
   animation: moveBg 10s infinite alternate;
-  z-index: -2;
+  z-index: -3;
 }
 
 @keyframes moveBg {
@@ -23,19 +23,18 @@ body {
   100% { filter: hue-rotate(60deg); }
 }
 
-/* HUD grid */
+/* HUD */
 .hud {
   position: fixed;
   width: 100%;
   height: 100%;
-  pointer-events: none;
   background-image: linear-gradient(rgba(0,255,255,0.05) 1px, transparent 1px),
                     linear-gradient(90deg, rgba(0,255,255,0.05) 1px, transparent 1px);
   background-size: 40px 40px;
-  z-index: -1;
+  z-index: -2;
 }
 
-/* scan line */
+/* scan */
 body::after {
   content: "";
   position: fixed;
@@ -43,7 +42,6 @@ body::after {
   height: 100%;
   background: linear-gradient(transparent, rgba(0,255,255,0.08), transparent);
   animation: scan 4s linear infinite;
-  pointer-events: none;
 }
 
 @keyframes scan {
@@ -62,71 +60,103 @@ body::after {
   background: linear-gradient(90deg, cyan, violet);
   -webkit-background-clip: text;
   color: transparent;
-  text-shadow: 0 0 20px cyan;
 }
 
-.hero p {
-  color: #aaa;
-}
-
-/* sections */
 .section {
   padding: 80px 10%;
 }
 
 h2 {
   color: cyan;
-  margin-bottom: 40px;
-  text-shadow: 0 0 10px cyan;
 }
 
 /* projects */
 .projects {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 30px;
 }
 
-/* cards */
 .card {
-  padding: 25px;
-  border-radius: 20px;
+  padding: 20px;
+  border-radius: 15px;
   backdrop-filter: blur(20px);
   background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
   transition: 0.3s;
-  box-shadow: 0 0 20px rgba(0,255,255,0.2);
 }
 
 .card:hover {
   transform: scale(1.05);
-  border: 1px solid cyan;
 }
 
 /* button */
 .btn {
-  display: inline-block;
-  margin-top: 10px;
   padding: 10px 20px;
-  background: linear-gradient(90deg, cyan, violet);
-  border-radius: 10px;
-  text-decoration: none;
+  background: cyan;
   color: black;
-  font-weight: bold;
+  text-decoration: none;
+  border-radius: 10px;
+}
+
+/* 🤖 robot */
+.robot-section {
+  height: 200vh;
+  text-align: center;
+}
+
+.robot {
+  position: sticky;
+  top: 30%;
+  width: 200px;
+  height: 300px;
+  margin: auto;
+}
+
+.part {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: 0.6s;
+}
+
+.head {
+  width: 80px;
+  height: 80px;
+  background: cyan;
+  margin: auto;
+}
+
+.body {
+  width: 100px;
+  height: 120px;
+  background: violet;
+  margin: 10px auto;
+}
+
+.arm {
+  width: 30px;
+  height: 100px;
+  background: cyan;
+  position: absolute;
+  top: 100px;
+}
+
+.left { left: -40px; }
+.right { right: -40px; }
+
+.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* particles */
 #particles {
   position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
-  z-index: -3;
+  z-index: -4;
 }
 
 footer {
   text-align: center;
   padding: 40px;
-  color: #666;
 }
