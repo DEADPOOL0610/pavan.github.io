@@ -1,26 +1,22 @@
-// 🔥 GitHub Auto Fetch
+// 🔥 GitHub Projects
 const username = "deadpool0610";
 const container = document.getElementById("projects");
 
 fetch(`https://api.github.com/users/${username}/repos`)
   .then(res => res.json())
   .then(data => {
-    container.innerHTML = "";
-
     data.slice(0, 6).forEach(repo => {
       container.innerHTML += `
         <div class="card">
           <h3>${repo.name}</h3>
-          <p>${repo.description || "No description available"}</p>
-          <p>⭐ ${repo.stargazers_count} | 🍴 ${repo.forks_count}</p>
-          <a href="${repo.html_url}" target="_blank" class="btn">View Repo</a>
+          <p>${repo.description || "No description"}</p>
+          <a href="${repo.html_url}" target="_blank" class="btn">View</a>
         </div>
       `;
     });
   });
 
-
-// 🌌 Particle Mouse Effect
+// 🌌 particles
 const canvas = document.getElementById("particles");
 const ctx = canvas.getContext("2d");
 
@@ -30,39 +26,31 @@ canvas.height = window.innerHeight;
 let particles = [];
 
 window.addEventListener("mousemove", e => {
-  for (let i = 0; i < 5; i++) {
-    particles.push({
-      x: e.x,
-      y: e.y,
-      size: Math.random() * 5,
-      speedX: (Math.random() - 0.5) * 2,
-      speedY: (Math.random() - 0.5) * 2
-    });
-  }
+  particles.push({ x: e.x, y: e.y, size: 5 });
 });
 
 function animate() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  particles.forEach((p, i) => {
-    p.x += p.speedX;
-    p.y += p.speedY;
-    p.size *= 0.96;
-
-    ctx.fillStyle = "rgba(0,255,255,0.8)";
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  particles.forEach((p,i)=>{
+    p.size *= 0.95;
+    ctx.fillStyle = "cyan";
     ctx.beginPath();
-    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+    ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
     ctx.fill();
-
-    if (p.size < 0.5) particles.splice(i, 1);
+    if(p.size<1) particles.splice(i,1);
   });
-
   requestAnimationFrame(animate);
 }
-
 animate();
 
-window.addEventListener("resize", () => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+// 🤖 scroll robot
+const parts = document.querySelectorAll(".part");
+
+window.addEventListener("scroll", () => {
+  let y = window.scrollY;
+
+  if (y > 300) parts[0].classList.add("show");
+  if (y > 600) parts[1].classList.add("show");
+  if (y > 900) parts[2].classList.add("show");
+  if (y > 1100) parts[3].classList.add("show");
 });
