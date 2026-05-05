@@ -1,56 +1,129 @@
-// 🔥 GitHub Projects
-const username = "deadpool0610";
-const container = document.getElementById("projects");
-
-fetch(`https://api.github.com/users/${username}/repos`)
-  .then(res => res.json())
-  .then(data => {
-    data.slice(0, 6).forEach(repo => {
-      container.innerHTML += `
-        <div class="card">
-          <h3>${repo.name}</h3>
-          <p>${repo.description || "No description"}</p>
-          <a href="${repo.html_url}" target="_blank" class="btn">View</a>
-        </div>
-      `;
-    });
-  });
-
-// 🌌 particles
-const canvas = document.getElementById("particles");
-const ctx = canvas.getContext("2d");
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let particles = [];
-
-window.addEventListener("mousemove", e => {
-  particles.push({ x: e.x, y: e.y, size: 5 });
-});
-
-function animate() {
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  particles.forEach((p,i)=>{
-    p.size *= 0.95;
-    ctx.fillStyle = "cyan";
-    ctx.beginPath();
-    ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
-    ctx.fill();
-    if(p.size<1) particles.splice(i,1);
-  });
-  requestAnimationFrame(animate);
+body {
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+  background: black;
+  color: white;
+  overflow-x: hidden;
 }
-animate();
 
-// 🤖 scroll robot
-const parts = document.querySelectorAll(".part");
+/* 🌌 animated background */
+.bg {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 20% 20%, #0ea5e9, transparent),
+              radial-gradient(circle at 80% 80%, #9333ea, transparent),
+              black;
+  animation: moveBg 10s infinite alternate;
+  z-index: -3;
+}
 
-window.addEventListener("scroll", () => {
-  let y = window.scrollY;
+@keyframes moveBg {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(60deg); }
+}
 
-  if (y > 300) parts[0].classList.add("show");
-  if (y > 600) parts[1].classList.add("show");
-  if (y > 900) parts[2].classList.add("show");
-  if (y > 1100) parts[3].classList.add("show");
-});
+/* HUD grid */
+.hud {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(rgba(0,255,255,0.05) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0,255,255,0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: -2;
+}
+
+/* scan line */
+body::after {
+  content: "";
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(transparent, rgba(0,255,255,0.08), transparent);
+  animation: scan 4s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+/* hero */
+.hero {
+  text-align: center;
+  padding: 120px 20px;
+}
+
+.hero h1 {
+  font-size: 60px;
+  background: linear-gradient(90deg, cyan, violet);
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 20px cyan;
+}
+
+/* sections */
+.section {
+  padding: 80px 10%;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 0.8s ease;
+}
+
+.section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+h2 {
+  color: cyan;
+  margin-bottom: 40px;
+}
+
+/* projects */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+/* cards */
+.card {
+  padding: 20px;
+  border-radius: 15px;
+  backdrop-filter: blur(20px);
+  background: rgba(255,255,255,0.05);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px cyan;
+}
+
+/* button */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: linear-gradient(90deg, cyan, violet);
+  color: black;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+/* particles */
+#particles {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: -4;
+}
+
+footer {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+}
