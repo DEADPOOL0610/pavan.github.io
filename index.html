@@ -86,12 +86,35 @@
 <section class="section">
   <h2>🚀 Projects</h2>
 
-  <div class="projects">
+  <div class="projects" id="projects"></div>
+
+<script>
+const projects = [
+  {
+    title: "AI Chatbot",
+    desc: "Conversational AI using NLP",
+    link: "https://github.com/yourusername/ai-chatbot"
+  },
+  {
+    title: "ERP System",
+    desc: "Python AI-powered ERP platform",
+    link: "https://github.com/yourusername/erp-system"
+  }
+];
+
+// auto render
+const container = document.getElementById("projects");
+
+projects.forEach(p => {
+  container.innerHTML += `
     <div class="card">
-      <h3>AI Chatbot</h3>
-      <p>Conversational AI using NLP</p>
-      <a href="#" class="btn">View</a>
+      <h3>${p.title}</h3>
+      <p>${p.desc}</p>
+      <a href="${p.link}" target="_blank" class="btn">View</a>
     </div>
+  `;
+});
+</script>
 
     <div class="card">
       <h3>ERP System</h3>
