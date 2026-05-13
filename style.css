@@ -91,16 +91,35 @@ h2 {
 
 /* cards */
 .card {
-  padding: 20px;
-  border-radius: 15px;
+  position: relative;
+  padding: 25px;
+  border-radius: 20px;
   backdrop-filter: blur(20px);
-  background: rgba(255,255,255,0.05);
-  transition: 0.3s;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease, box-shadow 0.3s ease;
+
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    130deg,
+    rgba(255,255,255,0.15),
+    transparent 40%
+  );
+  pointer-events: none;
 }
 
 .card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px cyan;
+  box-shadow:
+    0 0 20px rgba(0,255,255,0.4),
+    0 0 40px rgba(147,51,234,0.3);
 }
 
 /* button */
