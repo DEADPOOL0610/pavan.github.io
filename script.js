@@ -14,7 +14,6 @@ fetch(
 
   container.innerHTML = "";
 
-  // exclude portfolio repo names if needed
   const excluded = [
     "portfolio",
     "resume"
@@ -94,17 +93,17 @@ function attachTilt() {
             rect.height / 2;
 
           const rotateX =
-            -(y - centerY) / 25;
+            -(y - centerY) / 30;
 
           const rotateY =
-            (x - centerX) / 25;
+            (x - centerX) / 30;
 
           card.style.transform =
             `
             perspective(1000px)
             rotateX(${rotateX}deg)
             rotateY(${rotateY}deg)
-            scale(1.02)
+            translateY(-8px)
             `;
         }
       );
@@ -118,7 +117,7 @@ function attachTilt() {
             perspective(1000px)
             rotateX(0)
             rotateY(0)
-            scale(1)
+            translateY(0)
             `;
         }
       );
@@ -144,7 +143,9 @@ window.addEventListener(
       if (
         top < window.innerHeight - 100
       ) {
+
         sec.classList.add("show");
+
       }
 
     });
