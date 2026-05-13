@@ -5,146 +5,89 @@
 }
 
 body {
-  font-family: 'Orbitron', sans-serif;
-  background: #0a0f1f;
-  color: white;
+  font-family: 'Inter', sans-serif;
+  background: #f5f5f7;
+  color: #111827;
   overflow-x: hidden;
 }
 
-/* 🌌 textured background */
+/* subtle textured bg */
 .bg {
   position: fixed;
   inset: 0;
 
-  z-index: -3;
-
-  background-color: #0a0f1f;
-
-  background-image:
-
+  background:
     linear-gradient(
-      rgba(255,255,255,0.04) 1px,
+      rgba(0,0,0,0.03) 1px,
       transparent 1px
     ),
 
     linear-gradient(
       90deg,
-      rgba(255,255,255,0.04) 1px,
+      rgba(0,0,0,0.03) 1px,
       transparent 1px
     ),
 
-    radial-gradient(
-      rgba(255,255,255,0.025) 1px,
-      transparent 1px
-    ),
-
-    radial-gradient(
-      circle at top left,
-      rgba(56,189,248,0.08),
-      transparent 30%
-    ),
-
-    radial-gradient(
-      circle at bottom right,
-      rgba(168,85,247,0.08),
-      transparent 30%
-    );
+    #f5f5f7;
 
   background-size:
-    50px 50px,
-    50px 50px,
-    10px 10px,
-    auto,
-    auto;
+    40px 40px,
+    40px 40px;
+
+  z-index: -3;
 }
 
-/* ✨ doodles */
-.doodle {
+/* floating AI text */
+.floating-text {
   position: fixed;
-  color: rgba(255,255,255,0.04);
 
-  font-size: 120px;
-  font-weight: bold;
+  color: rgba(0,0,0,0.05);
+
+  font-size: 100px;
+  font-weight: 700;
 
   pointer-events: none;
 
-  z-index: -1;
+  animation: float 10s ease-in-out infinite;
 }
 
-.ai {
-  top: 15%;
-  left: 8%;
-  transform: rotate(-15deg);
+.ai1 {
+  top: 10%;
+  left: 10%;
 }
 
-.ml {
-  bottom: 20%;
-  right: 10%;
-  transform: rotate(10deg);
-}
-
-.py {
-  top: 55%;
-  left: 70%;
-  transform: rotate(-8deg);
-}
-
-/* 🚀 floating icons */
-.floating-icons .icon {
-  position: fixed;
-
-  padding: 12px 20px;
-
-  border-radius: 999px;
-
-  background: rgba(255,255,255,0.05);
-
-  border: 1px solid rgba(255,255,255,0.08);
-
-  color: #cbd5e1;
-
-  backdrop-filter: blur(10px);
-
-  animation: float 6s ease-in-out infinite;
-
-  z-index: 2;
-}
-
-.python {
-  top: 20%;
+.ai2 {
+  top: 50%;
   right: 10%;
 }
 
-.openai {
-  top: 40%;
-  left: 5%;
-}
-
-.azure {
-  bottom: 20%;
-  right: 15%;
-}
-
-.github {
+.ai3 {
   bottom: 10%;
-  left: 12%;
+  left: 20%;
+}
+
+.ai4 {
+  top: 30%;
+  right: 30%;
 }
 
 @keyframes float {
+
   0% {
     transform: translateY(0px);
   }
 
   50% {
-    transform: translateY(-15px);
+    transform: translateY(-20px);
   }
 
   100% {
     transform: translateY(0px);
   }
+
 }
 
-/* 🚀 hero */
+/* hero */
 .hero {
   text-align: center;
   padding: 180px 20px 120px;
@@ -152,47 +95,24 @@ body {
 
 .hero h1 {
   font-size: 90px;
-
-  color: #38bdf8;
+  font-weight: 700;
 
   margin-bottom: 20px;
-
-  text-shadow:
-    0 0 10px rgba(56,189,248,0.8),
-    0 0 20px rgba(56,189,248,0.5),
-    0 0 40px rgba(56,189,248,0.3);
 }
 
-/* typing */
 #typing {
-  color: #cbd5e1;
-
   font-size: 22px;
-
-  border-right: 2px solid cyan;
-
-  display: inline-block;
-
-  white-space: nowrap;
-  overflow: hidden;
-
-  animation: blink 0.7s infinite;
-}
-
-@keyframes blink {
-  50% {
-    border-color: transparent;
-  }
+  color: #6b7280;
 }
 
 /* sections */
 .section {
-  padding: 120px 10%;
+  padding: 100px 10%;
   max-width: 1200px;
   margin: auto;
 
   opacity: 0;
-  transform: translateY(40px);
+  transform: translateY(30px);
 
   transition: 0.8s ease;
 }
@@ -203,8 +123,24 @@ body {
 }
 
 .section h2 {
-  color: cyan;
+  font-size: 40px;
   margin-bottom: 40px;
+}
+
+/* glass */
+.glass {
+  background: rgba(255,255,255,0.6);
+
+  backdrop-filter: blur(20px);
+
+  border: 1px solid rgba(255,255,255,0.5);
+
+  border-radius: 28px;
+
+  padding: 30px;
+
+  box-shadow:
+    0 10px 40px rgba(0,0,0,0.06);
 }
 
 /* projects */
@@ -219,45 +155,14 @@ body {
 
 /* cards */
 .card {
-  position: relative;
-
-  padding: 25px;
-
-  border-radius: 20px;
-
-  backdrop-filter: blur(20px);
-
-  background: rgba(255,255,255,0.05);
-
-  border: 1px solid rgba(255,255,255,0.08);
-
-  transform-style: preserve-3d;
-
   transition:
-    transform 0.15s ease,
+    transform 0.2s ease,
     box-shadow 0.3s ease;
-
-  overflow: hidden;
-}
-
-.card::before {
-  content: "";
-
-  position: absolute;
-  inset: 0;
-
-  background:
-    linear-gradient(
-      130deg,
-      rgba(255,255,255,0.15),
-      transparent 40%
-    );
 }
 
 .card:hover {
   box-shadow:
-    0 0 20px rgba(0,255,255,0.3),
-    0 0 40px rgba(168,85,247,0.2);
+    0 15px 50px rgba(0,0,0,0.08);
 }
 
 /* skills */
@@ -268,87 +173,80 @@ body {
 }
 
 .skills span {
-  padding: 12px 20px;
+  padding: 14px 22px;
+
+  background: white;
 
   border-radius: 999px;
 
-  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(0,0,0,0.05);
 
-  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow:
+    0 5px 20px rgba(0,0,0,0.04);
 }
 
 /* timeline */
 .timeline {
-  position: relative;
+  border-left: 2px solid rgba(0,0,0,0.08);
 
   padding-left: 40px;
-
-  border-left: 2px solid cyan;
 }
 
 .timeline-item {
-  margin-bottom: 50px;
   position: relative;
+  margin-bottom: 50px;
 }
 
-.timeline-dot {
-  position: absolute;
-
-  left: -50px;
-  top: 5px;
-
+.dot {
   width: 18px;
   height: 18px;
 
-  background: cyan;
-
   border-radius: 50%;
 
-  box-shadow: 0 0 20px cyan;
+  background: #111827;
+
+  position: absolute;
+
+  left: -50px;
+  top: 25px;
 }
 
-.timeline-content {
-  background: rgba(255,255,255,0.05);
+.timeline-card h3 {
+  margin-bottom: 10px;
+}
 
-  padding: 20px;
+/* certifications */
+.certifications {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
 
-  border-radius: 15px;
-
-  border: 1px solid rgba(255,255,255,0.08);
+.cert-card {
+  font-weight: 600;
+  min-width: 120px;
+  text-align: center;
 }
 
 /* button */
 .btn {
   display: inline-block;
 
-  padding: 10px 20px;
+  margin-top: 20px;
 
-  border-radius: 10px;
+  padding: 14px 24px;
 
-  background:
-    linear-gradient(
-      90deg,
-      #38bdf8,
-      #a855f7
-    );
-
-  color: black;
-
-  font-weight: bold;
+  border-radius: 999px;
 
   text-decoration: none;
-}
 
-/* particles */
-#particles {
-  position: fixed;
-  inset: 0;
-  z-index: -2;
+  background: #111827;
+  color: white;
 }
 
 /* footer */
 footer {
   text-align: center;
-  padding: 60px 20px;
-  color: #94a3b8;
+  padding: 80px 20px;
+  color: #6b7280;
 }
