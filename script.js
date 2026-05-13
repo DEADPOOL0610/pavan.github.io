@@ -155,3 +155,27 @@ function attachTilt() {
   });
 
 }
+// 🤖 AI Typing Intro
+
+const typingElement = document.getElementById("typing");
+
+const text =
+  "AI Engineer | GenAI | Building Intelligent Systems";
+
+let index = 0;
+
+function typeText() {
+
+  if (index < text.length) {
+
+    typingElement.innerHTML += text.charAt(index);
+
+    index++;
+
+    setTimeout(typeText, 60);
+
+  }
+
+}
+
+typeText();
