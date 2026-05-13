@@ -51,7 +51,7 @@ fetch(
 });
 
 
-// 💎 3D Tilt Effect
+// 💎 tilt effect
 function attachTilt() {
 
   document.querySelectorAll(".card").forEach(card => {
@@ -192,19 +192,6 @@ function animateParticles() {
 }
 
 animateParticles();
-
-window.addEventListener(
-  "resize",
-  () => {
-
-    canvas.width =
-      window.innerWidth;
-
-    canvas.height =
-      window.innerHeight;
-
-  }
-);
 
 
 // ✨ reveal sections
