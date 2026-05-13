@@ -14,187 +14,121 @@ fetch(
 
   container.innerHTML = "";
 
-  data.slice(0, 6).forEach(repo => {
+  // exclude portfolio repo names if needed
+  const excluded = [
+    "portfolio",
+    "resume"
+  ];
 
-    container.innerHTML += `
+  data
+    .filter(repo =>
+      !excluded.includes(
+        repo.name.toLowerCase()
+      )
+    )
 
-      <div class="card">
+    .slice(0, 6)
 
-        <h3>${repo.name}</h3>
+    .forEach(repo => {
 
-        <p>
-          ${repo.description || "No description available"}
-        </p>
+      container.innerHTML += `
 
-        <p>
-          ⭐ ${repo.stargazers_count}
-          &nbsp;&nbsp;
-          🍴 ${repo.forks_count}
-        </p>
+        <div class="glass card">
 
-        <a
-          href="${repo.html_url}"
-          target="_blank"
-          class="btn">
+          <h3>${repo.name}</h3>
 
-          View Repo
+          <p>
+            ${repo.description || "Enterprise / AI project"}
+          </p>
 
-        </a>
+          <p>
+            ⭐ ${repo.stargazers_count}
+            &nbsp;&nbsp;
+            🍴 ${repo.forks_count}
+          </p>
 
-      </div>
+          <a
+            href="${repo.html_url}"
+            target="_blank"
+            class="btn">
 
-    `;
-  });
+            View Repo
+
+          </a>
+
+        </div>
+
+      `;
+    });
 
   attachTilt();
 
 });
 
 
-// 💎 tilt effect
+// subtle tilt
 function attachTilt() {
 
-  document.querySelectorAll(".card").forEach(card => {
+  document
+    .querySelectorAll(".card")
 
-    card.addEventListener("mousemove", e => {
+    .forEach(card => {
 
-      const rect =
-        card.getBoundingClientRect();
+      card.addEventListener(
+        "mousemove",
+        e => {
 
-      const x =
-        e.clientX - rect.left;
+          const rect =
+            card.getBoundingClientRect();
 
-      const y =
-        e.clientY - rect.top;
+          const x =
+            e.clientX - rect.left;
 
-      const centerX =
-        rect.width / 2;
+          const y =
+            e.clientY - rect.top;
 
-      const centerY =
-        rect.height / 2;
+          const centerX =
+            rect.width / 2;
 
-      const rotateX =
-        -(y - centerY) / 10;
+          const centerY =
+            rect.height / 2;
 
-      const rotateY =
-        (x - centerX) / 10;
+          const rotateX =
+            -(y - centerY) / 25;
 
-      card.style.transform =
-        `
-        perspective(1000px)
-        rotateX(${rotateX}deg)
-        rotateY(${rotateY}deg)
-        scale(1.05)
-        `;
+          const rotateY =
+            (x - centerX) / 25;
+
+          card.style.transform =
+            `
+            perspective(1000px)
+            rotateX(${rotateX}deg)
+            rotateY(${rotateY}deg)
+            scale(1.02)
+            `;
+        }
+      );
+
+      card.addEventListener(
+        "mouseleave",
+        () => {
+
+          card.style.transform =
+            `
+            perspective(1000px)
+            rotateX(0)
+            rotateY(0)
+            scale(1)
+            `;
+        }
+      );
 
     });
-
-    card.addEventListener("mouseleave", () => {
-
-      card.style.transform =
-        `
-        perspective(1000px)
-        rotateX(0)
-        rotateY(0)
-        scale(1)
-        `;
-
-    });
-
-  });
 
 }
 
 
-// 🌌 particles
-const canvas =
-  document.getElementById("particles");
-
-const ctx =
-  canvas.getContext("2d");
-
-canvas.width =
-  window.innerWidth;
-
-canvas.height =
-  window.innerHeight;
-
-let particles = [];
-
-window.addEventListener(
-  "mousemove",
-  e => {
-
-    for (let i = 0; i < 4; i++) {
-
-      particles.push({
-
-        x: e.x,
-        y: e.y,
-
-        size:
-          Math.random() * 4,
-
-        speedX:
-          (Math.random() - 0.5) * 2,
-
-        speedY:
-          (Math.random() - 0.5) * 2
-
-      });
-
-    }
-
-  }
-);
-
-function animateParticles() {
-
-  ctx.clearRect(
-    0,
-    0,
-    canvas.width,
-    canvas.height
-  );
-
-  particles.forEach((p, i) => {
-
-    p.x += p.speedX;
-    p.y += p.speedY;
-
-    p.size *= 0.96;
-
-    ctx.fillStyle =
-      "rgba(56,189,248,0.8)";
-
-    ctx.beginPath();
-
-    ctx.arc(
-      p.x,
-      p.y,
-      p.size,
-      0,
-      Math.PI * 2
-    );
-
-    ctx.fill();
-
-    if (p.size < 0.5) {
-      particles.splice(i, 1);
-    }
-
-  });
-
-  requestAnimationFrame(
-    animateParticles
-  );
-
-}
-
-animateParticles();
-
-
-// ✨ reveal sections
+// reveal sections
 const sections =
   document.querySelectorAll(".section");
 
@@ -219,12 +153,12 @@ window.addEventListener(
 );
 
 
-// 🤖 typing intro
+// typing intro
 const typingElement =
   document.getElementById("typing");
 
 const text =
-  "AI Engineer | GenAI | Building Intelligent Systems";
+  "Dynamics 365 F&O Developer • AI Enthusiast • Enterprise Systems";
 
 let index = 0;
 
@@ -237,7 +171,7 @@ function typeText() {
 
     index++;
 
-    setTimeout(typeText, 60);
+    setTimeout(typeText, 45);
 
   }
 
