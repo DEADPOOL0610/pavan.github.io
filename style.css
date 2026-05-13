@@ -6,54 +6,67 @@
 
 body {
   font-family: 'Orbitron', sans-serif;
-  background: #0b1020;
+  background: #0a0f1f;
   color: white;
   overflow-x: hidden;
 }
 
-/* 🌌 textured blueprint background */
+/* 🌌 textured background */
 .bg {
   position: fixed;
   inset: 0;
 
-  background-color: #0b1020;
+  z-index: -3;
+
+  background-color: #0a0f1f;
 
   background-image:
 
-    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(
+      rgba(255,255,255,0.04) 1px,
+      transparent 1px
+    ),
 
-    radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,0.04) 1px,
+      transparent 1px
+    ),
 
-    radial-gradient(circle at top left,
-      rgba(0,255,255,0.08),
-      transparent 30%),
+    radial-gradient(
+      rgba(255,255,255,0.025) 1px,
+      transparent 1px
+    ),
 
-    radial-gradient(circle at bottom right,
+    radial-gradient(
+      circle at top left,
+      rgba(56,189,248,0.08),
+      transparent 30%
+    ),
+
+    radial-gradient(
+      circle at bottom right,
       rgba(168,85,247,0.08),
-      transparent 30%);
+      transparent 30%
+    );
 
   background-size:
-    60px 60px,
-    60px 60px,
-    12px 12px,
+    50px 50px,
+    50px 50px,
+    10px 10px,
     auto,
     auto;
-
-  z-index: -3;
 }
 
 /* ✨ doodles */
 .doodle {
   position: fixed;
-
-  color: rgba(255,255,255,0.05);
+  color: rgba(255,255,255,0.04);
 
   font-size: 120px;
   font-weight: bold;
 
   pointer-events: none;
-  user-select: none;
 
   z-index: -1;
 }
@@ -76,6 +89,61 @@ body {
   transform: rotate(-8deg);
 }
 
+/* 🚀 floating icons */
+.floating-icons .icon {
+  position: fixed;
+
+  padding: 12px 20px;
+
+  border-radius: 999px;
+
+  background: rgba(255,255,255,0.05);
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  color: #cbd5e1;
+
+  backdrop-filter: blur(10px);
+
+  animation: float 6s ease-in-out infinite;
+
+  z-index: 2;
+}
+
+.python {
+  top: 20%;
+  right: 10%;
+}
+
+.openai {
+  top: 40%;
+  left: 5%;
+}
+
+.azure {
+  bottom: 20%;
+  right: 15%;
+}
+
+.github {
+  bottom: 10%;
+  left: 12%;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
 /* 🚀 hero */
 .hero {
   text-align: center;
@@ -84,9 +152,10 @@ body {
 
 .hero h1 {
   font-size: 90px;
-  margin-bottom: 20px;
 
   color: #38bdf8;
+
+  margin-bottom: 20px;
 
   text-shadow:
     0 0 10px rgba(56,189,248,0.8),
@@ -94,9 +163,10 @@ body {
     0 0 40px rgba(56,189,248,0.3);
 }
 
-/* 🤖 typing effect */
+/* typing */
 #typing {
   color: #cbd5e1;
+
   font-size: 22px;
 
   border-right: 2px solid cyan;
@@ -115,7 +185,7 @@ body {
   }
 }
 
-/* 📦 sections */
+/* sections */
 .section {
   padding: 120px 10%;
   max-width: 1200px;
@@ -137,7 +207,7 @@ body {
   margin-bottom: 40px;
 }
 
-/* 🚀 projects grid */
+/* projects */
 .projects {
   display: grid;
 
@@ -147,7 +217,7 @@ body {
   gap: 30px;
 }
 
-/* 💎 cards */
+/* cards */
 .card {
   position: relative;
 
@@ -182,8 +252,6 @@ body {
       rgba(255,255,255,0.15),
       transparent 40%
     );
-
-  pointer-events: none;
 }
 
 .card:hover {
@@ -192,36 +260,7 @@ body {
     0 0 40px rgba(168,85,247,0.2);
 }
 
-.card h3 {
-  margin-bottom: 15px;
-  color: white;
-}
-
-.card p {
-  color: #cbd5e1;
-  margin-bottom: 15px;
-}
-
-/* 🔘 button */
-.btn {
-  display: inline-block;
-
-  padding: 10px 20px;
-
-  border-radius: 10px;
-
-  background:
-    linear-gradient(90deg,
-      #38bdf8,
-      #a855f7);
-
-  color: black;
-  font-weight: bold;
-
-  text-decoration: none;
-}
-
-/* 🧠 skills */
+/* skills */
 .skills {
   display: flex;
   flex-wrap: wrap;
@@ -233,12 +272,74 @@ body {
 
   border-radius: 999px;
 
-  background: rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.05);
 
   border: 1px solid rgba(255,255,255,0.08);
 }
 
-/* 🌌 particles */
+/* timeline */
+.timeline {
+  position: relative;
+
+  padding-left: 40px;
+
+  border-left: 2px solid cyan;
+}
+
+.timeline-item {
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.timeline-dot {
+  position: absolute;
+
+  left: -50px;
+  top: 5px;
+
+  width: 18px;
+  height: 18px;
+
+  background: cyan;
+
+  border-radius: 50%;
+
+  box-shadow: 0 0 20px cyan;
+}
+
+.timeline-content {
+  background: rgba(255,255,255,0.05);
+
+  padding: 20px;
+
+  border-radius: 15px;
+
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* button */
+.btn {
+  display: inline-block;
+
+  padding: 10px 20px;
+
+  border-radius: 10px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #38bdf8,
+      #a855f7
+    );
+
+  color: black;
+
+  font-weight: bold;
+
+  text-decoration: none;
+}
+
+/* particles */
 #particles {
   position: fixed;
   inset: 0;
