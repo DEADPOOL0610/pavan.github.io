@@ -64,6 +64,27 @@ body::after {
   text-shadow: 0 0 20px cyan;
 }
 
+#typing {
+  color: #cbd5e1;
+  font-size: 20px;
+  margin-top: 20px;
+  min-height: 30px;
+
+  border-right: 2px solid cyan;
+  display: inline-block;
+
+  white-space: nowrap;
+  overflow: hidden;
+
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
 /* sections */
 .section {
   padding: 80px 10%;
