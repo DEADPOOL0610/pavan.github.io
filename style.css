@@ -20,7 +20,7 @@ body {
   overflow-x: hidden;
 }
 
-/* 🌌 APPLE STYLE BACKGROUND */
+/* 🌌 background */
 .bg {
 
   position: fixed;
@@ -81,7 +81,7 @@ body {
   z-index: -5;
 }
 
-/* floating AI words */
+/* floating AI text */
 .floating-text {
 
   position: fixed;
@@ -200,7 +200,7 @@ body {
   letter-spacing: -2px;
 }
 
-/* 💎 REAL APPLE GLASS */
+/* 💎 glass */
 .glass {
 
   background:
@@ -231,18 +231,89 @@ body {
   line-height: 1.9;
 }
 
-/* projects */
-.projects {
+/* 🚀 PROJECT GALLERY */
+.projects-container {
 
-  display: grid;
-
-  grid-template-columns:
-    repeat(auto-fit, minmax(320px, 1fr));
-
-  gap: 32px;
+  position: relative;
 }
 
+.projects {
+
+  display: flex;
+
+  gap: 30px;
+
+  overflow-x: auto;
+
+  scroll-snap-type: x mandatory;
+
+  padding-bottom: 20px;
+
+  scrollbar-width: none;
+}
+
+.projects::-webkit-scrollbar {
+
+  display: none;
+}
+
+/* fade sides */
+.projects-container::before {
+
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 0;
+  bottom: 0;
+
+  width: 100px;
+
+  background:
+    linear-gradient(
+      to right,
+      #d7dce3,
+      transparent
+    );
+
+  z-index: 2;
+
+  pointer-events: none;
+}
+
+.projects-container::after {
+
+  content: "";
+
+  position: absolute;
+
+  right: 0;
+  top: 0;
+  bottom: 0;
+
+  width: 100px;
+
+  background:
+    linear-gradient(
+      to left,
+      #d7dce3,
+      transparent
+    );
+
+  z-index: 2;
+
+  pointer-events: none;
+}
+
+/* project cards */
 .card {
+
+  min-width: 420px;
+
+  flex-shrink: 0;
+
+  scroll-snap-align: start;
 
   padding: 38px;
 
@@ -255,7 +326,7 @@ body {
 .card:hover {
 
   transform:
-    translateY(-6px);
+    translateY(-8px);
 
   background:
     rgba(255,255,255,0.12);
