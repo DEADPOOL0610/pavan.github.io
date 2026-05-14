@@ -26,7 +26,7 @@ fetch(
       )
     )
 
-    .slice(0, 6)
+    .slice(0, 10)
 
     .forEach(repo => {
 
@@ -60,74 +60,10 @@ fetch(
       `;
     });
 
-  attachTilt();
-
 });
 
 
-// subtle tilt
-function attachTilt() {
-
-  document
-    .querySelectorAll(".card")
-
-    .forEach(card => {
-
-      card.addEventListener(
-        "mousemove",
-        e => {
-
-          const rect =
-            card.getBoundingClientRect();
-
-          const x =
-            e.clientX - rect.left;
-
-          const y =
-            e.clientY - rect.top;
-
-          const centerX =
-            rect.width / 2;
-
-          const centerY =
-            rect.height / 2;
-
-          const rotateX =
-            -(y - centerY) / 30;
-
-          const rotateY =
-            (x - centerX) / 30;
-
-          card.style.transform =
-            `
-            perspective(1000px)
-            rotateX(${rotateX}deg)
-            rotateY(${rotateY}deg)
-            translateY(-8px)
-            `;
-        }
-      );
-
-      card.addEventListener(
-        "mouseleave",
-        () => {
-
-          card.style.transform =
-            `
-            perspective(1000px)
-            rotateX(0)
-            rotateY(0)
-            translateY(0)
-            `;
-        }
-      );
-
-    });
-
-}
-
-
-// reveal sections
+// 🚀 Reveal Sections
 const sections =
   document.querySelectorAll(".section");
 
@@ -154,7 +90,7 @@ window.addEventListener(
 );
 
 
-// typing intro
+// 🚀 Typing Effect
 const typingElement =
   document.getElementById("typing");
 
@@ -179,3 +115,72 @@ function typeText() {
 }
 
 typeText();
+
+
+// 🚀 Project Slider Buttons
+const slider =
+  document.getElementById("projects");
+
+const leftBtn =
+  document.getElementById("leftBtn");
+
+const rightBtn =
+  document.getElementById("rightBtn");
+
+// slide right
+rightBtn.addEventListener(
+  "click",
+  () => {
+
+    slider.scrollBy({
+      left: 450,
+      behavior: "smooth"
+    });
+
+    // loop
+    if (
+      slider.scrollLeft +
+      slider.clientWidth >=
+      slider.scrollWidth - 10
+    ) {
+
+      setTimeout(() => {
+
+        slider.scrollTo({
+          left: 0,
+          behavior: "smooth"
+        });
+
+      }, 500);
+
+    }
+
+  }
+);
+
+// slide left
+leftBtn.addEventListener(
+  "click",
+  () => {
+
+    slider.scrollBy({
+      left: -450,
+      behavior: "smooth"
+    });
+
+    // reverse loop
+    if (slider.scrollLeft <= 0) {
+
+      setTimeout(() => {
+
+        slider.scrollTo({
+          left: slider.scrollWidth,
+          behavior: "smooth"
+        });
+
+      }, 500);
+
+    }
+
+  }
+);
