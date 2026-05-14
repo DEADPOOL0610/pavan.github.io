@@ -43,7 +43,7 @@ function renderProjects() {
 
       <div class="card">
 
-        <div>
+        <div class="card-top">
 
           <h3>${repo.name}</h3>
 
@@ -79,16 +79,16 @@ function renderProjects() {
     `;
   });
 
-  centerActiveCard();
 }
 
 
-// 🚀 Active card index
+// 🚀 Carousel
+const slider =
+  document.getElementById("projects");
+
 let currentIndex = 0;
 
-
-// 🚀 Center Card
-function centerActiveCard() {
+function moveCarousel() {
 
   const cards =
     document.querySelectorAll(".card");
@@ -96,11 +96,12 @@ function centerActiveCard() {
   if (!cards.length) return;
 
   const cardWidth =
-    cards[0].offsetWidth + 36;
+    cards[0].offsetWidth + 48;
 
-  container.scrollTo({
+  slider.scrollTo({
 
     left: currentIndex * cardWidth,
+
     behavior: "smooth"
 
   });
@@ -108,7 +109,7 @@ function centerActiveCard() {
 }
 
 
-// 🚀 Right button
+// RIGHT
 document
   .getElementById("rightBtn")
 
@@ -118,22 +119,20 @@ document
 
       currentIndex++;
 
-      // loop back to first
       if (
         currentIndex >= reposData.length
       ) {
 
         currentIndex = 0;
-
       }
 
-      centerActiveCard();
+      moveCarousel();
 
     }
   );
 
 
-// 🚀 Left button
+// LEFT
 document
   .getElementById("leftBtn")
 
@@ -143,15 +142,13 @@ document
 
       currentIndex--;
 
-      // loop to last
       if (currentIndex < 0) {
 
         currentIndex =
           reposData.length - 1;
-
       }
 
-      centerActiveCard();
+      moveCarousel();
 
     }
   );
