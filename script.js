@@ -32,28 +32,38 @@ fetch(
 
       container.innerHTML += `
 
-        <div class="glass card">
+        <div class="card">
 
-          <h3>${repo.name}</h3>
+          <div>
 
-          <p>
-            ${repo.description || "Enterprise / AI project"}
-          </p>
+            <h3>${repo.name}</h3>
 
-          <p>
-            ⭐ ${repo.stargazers_count}
-            &nbsp;&nbsp;
-            🍴 ${repo.forks_count}
-          </p>
+            <p>
+              ${repo.description || "Enterprise / AI project"}
+            </p>
 
-          <a
-            href="${repo.html_url}"
-            target="_blank"
-            class="btn">
+          </div>
 
-            View Repo
+          <div class="card-bottom">
 
-          </a>
+            <div class="repo-stats">
+
+              ⭐ ${repo.stargazers_count}
+              &nbsp;&nbsp;&nbsp;
+              🍴 ${repo.forks_count}
+
+            </div>
+
+            <a
+              href="${repo.html_url}"
+              target="_blank"
+              class="btn">
+
+              View Repo
+
+            </a>
+
+          </div>
 
         </div>
 
@@ -129,7 +139,7 @@ document
     () => {
 
       slider.scrollBy({
-        left: 400,
+        left: slider.clientWidth,
         behavior: "smooth"
       });
 
@@ -144,7 +154,7 @@ document
     () => {
 
       slider.scrollBy({
-        left: -400,
+        left: -slider.clientWidth,
         behavior: "smooth"
       });
 
