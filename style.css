@@ -8,7 +8,12 @@ body {
 
   font-family: 'Inter', sans-serif;
 
-  background: #eef1f5;
+  background:
+    linear-gradient(
+      180deg,
+      #eef2f7,
+      #dfe7f1
+    );
 
   color: #111827;
 
@@ -37,9 +42,7 @@ body {
     radial-gradient(
       rgba(0,0,0,0.015) 1px,
       transparent 1px
-    ),
-
-    #eef1f5;
+    );
 
   background-size:
     40px 40px,
@@ -49,7 +52,7 @@ body {
   z-index: -5;
 }
 
-/* floating AI text */
+/* floating AI words */
 .floating-text {
 
   position: fixed;
@@ -168,29 +171,64 @@ body {
   letter-spacing: -1px;
 }
 
-/* 💎 REAL GLASS EFFECT */
+/* 💎 LIQUID GLASS */
 .glass {
 
-  background: rgba(255,255,255,0.10);
-  blur: 40px;
+  position: relative;
+
+  background:
+    rgba(255,255,255,0.08);
 
   backdrop-filter:
-    blur(40px);
+    blur(50px)
+    saturate(180%);
 
   -webkit-backdrop-filter:
-    blur(40px);
+    blur(50px)
+    saturate(180%);
 
   border:
+    1px solid rgba(255,255,255,0.18);
+
+  border-top:
+    1px solid rgba(255,255,255,0.35);
+
+  border-left:
     1px solid rgba(255,255,255,0.25);
 
   box-shadow:
 
-    0 8px 32px rgba(0,0,0,0.05),
+    inset 0 1px 1px rgba(255,255,255,0.25),
 
-    inset 0 1px 1px rgba(255,255,255,0.25);
+    inset 0 -1px 1px rgba(255,255,255,0.08),
+
+    0 8px 32px rgba(0,0,0,0.05);
 
   border-radius: 32px;
+
+  overflow: hidden;
 }
+
+/* ✨ liquid reflection */
+.glass::before {
+
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,0.28),
+      rgba(255,255,255,0.02) 40%,
+      transparent 60%
+    );
+
+  pointer-events: none;
+}
+
 /* about */
 .about-card {
 
@@ -218,13 +256,18 @@ body {
 
   transition:
     transform 0.3s ease,
+    background 0.3s ease,
     box-shadow 0.3s ease;
 }
 
 .card:hover {
 
   transform:
-    translateY(-8px);
+    translateY(-6px)
+    scale(1.01);
+
+  background:
+    rgba(255,255,255,0.12);
 
   box-shadow:
 
@@ -272,6 +315,9 @@ body {
 
   transform:
     translateY(-4px);
+
+  background:
+    rgba(255,255,255,0.14);
 }
 
 /* timeline */
@@ -313,6 +359,17 @@ body {
 .timeline-card {
 
   padding: 40px;
+
+  transition: 0.3s;
+}
+
+.timeline-card:hover {
+
+  transform:
+    translateY(-5px);
+
+  background:
+    rgba(255,255,255,0.12);
 }
 
 .timeline-card h3 {
@@ -352,6 +409,17 @@ body {
   font-weight: 600;
 
   font-size: 20px;
+
+  transition: 0.3s;
+}
+
+.cert-card:hover {
+
+  transform:
+    translateY(-4px);
+
+  background:
+    rgba(255,255,255,0.12);
 }
 
 /* contact */
