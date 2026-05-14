@@ -117,70 +117,36 @@ function typeText() {
 typeText();
 
 
-// 🚀 Project Slider Buttons
+// 🚀 Carousel
 const slider =
   document.getElementById("projects");
 
-const leftBtn =
-  document.getElementById("leftBtn");
+document
+  .getElementById("rightBtn")
 
-const rightBtn =
-  document.getElementById("rightBtn");
+  .addEventListener(
+    "click",
+    () => {
 
-// slide right
-rightBtn.addEventListener(
-  "click",
-  () => {
-
-    slider.scrollBy({
-      left: 450,
-      behavior: "smooth"
-    });
-
-    // loop
-    if (
-      slider.scrollLeft +
-      slider.clientWidth >=
-      slider.scrollWidth - 10
-    ) {
-
-      setTimeout(() => {
-
-        slider.scrollTo({
-          left: 0,
-          behavior: "smooth"
-        });
-
-      }, 500);
+      slider.scrollBy({
+        left: 400,
+        behavior: "smooth"
+      });
 
     }
+  );
 
-  }
-);
+document
+  .getElementById("leftBtn")
 
-// slide left
-leftBtn.addEventListener(
-  "click",
-  () => {
+  .addEventListener(
+    "click",
+    () => {
 
-    slider.scrollBy({
-      left: -450,
-      behavior: "smooth"
-    });
-
-    // reverse loop
-    if (slider.scrollLeft <= 0) {
-
-      setTimeout(() => {
-
-        slider.scrollTo({
-          left: slider.scrollWidth,
-          behavior: "smooth"
-        });
-
-      }, 500);
+      slider.scrollBy({
+        left: -400,
+        behavior: "smooth"
+      });
 
     }
-
-  }
-);
+  );
