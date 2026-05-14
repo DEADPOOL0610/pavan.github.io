@@ -20,7 +20,7 @@ body {
   overflow-x: hidden;
 }
 
-/* 🌌 background */
+/* 🌌 Background */
 .bg {
 
   position: fixed;
@@ -231,10 +231,14 @@ body {
   line-height: 1.9;
 }
 
-/* 🚀 PROJECT GALLERY */
-.projects-container {
+/* 🚀 PROJECT SLIDER */
+.projects-wrapper {
 
   position: relative;
+
+  display: flex;
+
+  align-items: center;
 }
 
 .projects {
@@ -245,11 +249,15 @@ body {
 
   overflow-x: auto;
 
-  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
 
-  padding-bottom: 20px;
+  padding:
+    20px
+    10px;
 
   scrollbar-width: none;
+
+  width: 100%;
 }
 
 .projects::-webkit-scrollbar {
@@ -257,63 +265,11 @@ body {
   display: none;
 }
 
-/* fade sides */
-.projects-container::before {
-
-  content: "";
-
-  position: absolute;
-
-  left: 0;
-  top: 0;
-  bottom: 0;
-
-  width: 100px;
-
-  background:
-    linear-gradient(
-      to right,
-      #d7dce3,
-      transparent
-    );
-
-  z-index: 2;
-
-  pointer-events: none;
-}
-
-.projects-container::after {
-
-  content: "";
-
-  position: absolute;
-
-  right: 0;
-  top: 0;
-  bottom: 0;
-
-  width: 100px;
-
-  background:
-    linear-gradient(
-      to left,
-      #d7dce3,
-      transparent
-    );
-
-  z-index: 2;
-
-  pointer-events: none;
-}
-
-/* project cards */
 .card {
 
   min-width: 420px;
 
   flex-shrink: 0;
-
-  scroll-snap-align: start;
 
   padding: 38px;
 
@@ -351,6 +307,66 @@ body {
   margin-bottom: 18px;
 
   line-height: 1.8;
+}
+
+/* ⬅️➡️ buttons */
+.slide-btn {
+
+  position: absolute;
+
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  width: 60px;
+
+  height: 60px;
+
+  border: none;
+
+  border-radius: 50%;
+
+  cursor: pointer;
+
+  z-index: 5;
+
+  font-size: 28px;
+
+  color: #111827;
+
+  background:
+    rgba(255,255,255,0.18);
+
+  backdrop-filter:
+    blur(20px);
+
+  border:
+    1px solid rgba(255,255,255,0.25);
+
+  box-shadow:
+    0 4px 20px rgba(0,0,0,0.08);
+
+  transition: 0.3s;
+}
+
+.slide-btn:hover {
+
+  transform:
+    translateY(-50%)
+    scale(1.08);
+
+  background:
+    rgba(255,255,255,0.28);
+}
+
+.left-btn {
+
+  left: -30px;
+}
+
+.right-btn {
+
+  right: -30px;
 }
 
 /* skills */
